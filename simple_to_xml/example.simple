@@ -1,0 +1,31 @@
+xml
+  user id='1'
+    name James
+    age 27
+    number 6
+    other tag='nickname' king
+  user id='2'
+    name Wade
+    age 30
+    number 3
+    other tag='nickname' thunder
+  user id='3'
+    name Howard
+    age 25
+    number 12
+    other tag='nickname' monster
+  user id='4'
+    name James
+    age 27
+    number 6
+    other tag='nickname' king
+  user id='5'
+    name Wade
+    age 30
+    number 3
+    other tag='nickname' thunder
+  user id='6'
+    name Howard
+    age 25
+    number 12
+    other tag='nickname' monster

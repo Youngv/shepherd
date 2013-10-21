@@ -1,0 +1,40 @@
+<xml>
+  <user id="1">
+    <name>James</name>
+    <age>27</age>
+    <number>6</number>
+    <other tag="nickname">king</other>
+  </user>
+  <user id="2">
+    <name>Wade</name>
+    <age>30</age>
+    <number>3</number>
+    <other tag="nickname">thunder</other>
+  </user>
+  <user id="3">
+    <name>Howard</name>
+    <age>25</age>
+    <number>12</number>
+    <other tag="nickname">monster</other>
+  </user>
+  <user id="4">
+    <name>James</name>
+    <age>27</age>
+    <number>6</number>
+    <other tag="nickname">king</other>
+  </user>
+  <user id="5">
+    <name>Wade</name>
+    <age>30</age>
+    <number>3</number>
+    <other tag="nickname">thunder</other>
+  </user>
+  <user id="6">
+    <name>Howard</name>
+    <age>25</age>
+    <number>12</number>
+    <other tag="nickname">monster</other>
+  </user>
+</xml>
+<inspect/>
+<to_s/>
