@@ -3,8 +3,8 @@
 <head>
 <script>
 function mandelbrot() {
-  var c=document.getElementById("myCanvas");
-  var cxt=c.getContext("2d");
+  var canvas=document.getElementById("myCanvas");
+  var cxt=canvas.getContext("2d");
 
   var width = 800;
   var height = 800;
@@ -28,8 +28,8 @@ function mandelbrot() {
         cxt.beginPath();
         cxt.lineWidth=2;
         //cxt.strokeStyle = 'rgba(255,0,0,0.5)'
-        cxt.moveTo(i,j);
-        cxt.lineTo(i+1,j+1);
+        cxt.moveTo(j,i);
+        cxt.lineTo(j+1,i+1);
         cxt.stroke();
       }
       a += minA;
@@ -37,10 +37,17 @@ function mandelbrot() {
     b -= minB;
     a = -2.0;
   }
+  var dataUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  button = document.getElementById("save");
+  button.onclick = function save() { window.location.href = dataUrl; }
+
+  //document.getElementById('canvasImg').src = dataUrl;
 }
 </script>
 </head>
 <body onload="mandelbrot()">
   <canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;"></canvas>
+  <img id="canvasImg" alt="">
+  <button id="save" onclick="">Save the Image</button>
 </body>
 </html>

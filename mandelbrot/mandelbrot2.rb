@@ -30,7 +30,6 @@ class Mandelbrot
     end
     @png.save('dot.png')
   end
-
 end
 
 m = Mandelbrot.new
