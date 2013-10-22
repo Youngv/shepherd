@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function mandelbrot() {
+  var canvas=document.getElementById("myCanvas");
+  var cxt=canvas.getContext("2d");
+
+  var width = 800;
+  var height = 800;
+  var minA = 0.005;
+  var minB = 0.005;
+  var a = -2.0;
+  var b = 2.0;
+
+  for(i=0;i<height;i++) {
+    for(j=0;j<width;j++) {
+      x = 0;
+      y = 0;
+      looper = 0;
+      while(looper<100 && (x * x + y * y)<4) {
+        looper ++;
+        z = (x * x) - (y * y) + a;
+        y = 2 * x * y + b;
+        x = z;
+      }
+      if(looper == 100) {
+        cxt.beginPath();
+        cxt.lineWidth=2;
+        //cxt.strokeStyle = 'rgba(255,0,0,0.5)'
+        cxt.moveTo(j,i);
+        cxt.lineTo(j+1,i+1);
+        cxt.stroke();
+      }
+      a += minA;
+    }
+    b -= minB;
+    a = -2.0;
+  }
+  var dataUrl = canvas.toDataURL("image/png")
+  $("#canvas").val(dataUrl);
+}
+</script>
+</head>
+<body onload="mandelbrot()">
+  <canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;"></canvas>
+  <img id="canvasImg" alt="">
+
+  <%= form_tag('/mandelbrot/save',{:action => 'save'}) do %>
+    <%= hidden_field_tag "canvas" %>
+    <%= submit_tag "Save the Picture" %>
+  <% end %>
+</body>
+</html>

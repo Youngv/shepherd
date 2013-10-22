@@ -1,4 +1,8 @@
 Stu::Application.routes.draw do
+  get "mandelbrot/index"
+  get "mandelbrot/ruby"
+  post "mandelbrot/save"
+
   resources :students
 
 

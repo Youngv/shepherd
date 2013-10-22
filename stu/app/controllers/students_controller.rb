@@ -1,6 +1,14 @@
 class StudentsController < ApplicationController
   def index
     @students = Student.all
+    if !params[:school_id].blank?
+      @school = School.find_by_id(params[:school_id])
+      if @school.blank?
+        render 404
+      end
+    else
+      redirect_to school
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,7 +31,7 @@ class StudentsController < ApplicationController
       @student.school_id = params[:school_id]
       @school = School.find_by_id(params[:school_id])
       if @school.blank?
-        render_404
+        render 404
       end
     end
     puts @school.inspect
