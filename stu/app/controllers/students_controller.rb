@@ -1,13 +1,13 @@
 class StudentsController < ApplicationController
   def index
-    @students = Student.all
     if !params[:school_id].blank?
       @school = School.find_by_id(params[:school_id])
+      @students = @school.students
       if @school.blank?
         render 404
       end
     else
-      redirect_to school
+      @students = Student.all
     end
 
     respond_to do |format|
@@ -31,10 +31,9 @@ class StudentsController < ApplicationController
       @student.school_id = params[:school_id]
       @school = School.find_by_id(params[:school_id])
       if @school.blank?
-        render 404
+        redirect_to '/404.html' and return
       end
     end
-    puts @school.inspect
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @student }
@@ -47,12 +46,13 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(params[:student])
-    #@school = School.find_by_id(params[:school_id])
+    #@school = School.find(params[:school_id])
     #@student = @school.students.new(params[:student])
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
+        StuMailer.student_information_email(@student).deliver
       else
         format.html { render action: "new" }
         format.json { render json: @student.errors, status: :unprocessable_entity }

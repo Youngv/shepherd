@@ -11,34 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="pure-control-group">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br />
+  <div class="pure-control-group">
+    <%= f.label :age %>
     <%= f.number_field(:age, :in => 0..200) %>
   </div>
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.select :gender,{"Male" => 0,"Female" => 1} %>
+  <div class="pure-control-group">
+    <%= f.label :gender %>
+    Male: <%= f.radio_button :gender, "Male" %>
+    Female: <%= f.radio_button :gender, "Female" %>
   </div>
-  <div class="field">
-    <%= f.label :background %><br />
+  <div class="pure-control-group">
+    <%= f.label :background %>
     <%= f.text_area :background %>
   </div>
-  <div class="field">
-    <%= f.label :birthday %><br />
+  <div class="pure-control-group">
+    <%= f.label :birthday %>
     <%= f.date_select(:birthday,:start_year => 1900) %>
   </div>
-  <div class="field">
+  <div class="pure-control-group">
     <%= f.hidden_field :school_id %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="pure-control-group">
+    <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="pure-controls">
+    <%= f.submit :class => 'pure-button pure-button-primary' %>
   </div>
 <% end %>

@@ -1,25 +1,26 @@
 <h1>Listing schools</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @schools.each do |school| %>
-  <tr>
-    <td><%= school.name %></td>
-    <td><%= school.address %></td>
-    <td><%= link_to 'Show', school %></td>
-    <td><%= link_to 'Edit', edit_school_path(school) %></td>
-    <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'Add New Student', new_student_path(:school_id => school.id) %></td>
-    <td><%= link_to 'List Students', students_path(:school_id => school.id) %></td>
-  </tr>
-<% end %>
+<table class="pure-table pure-table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= school.name %></td>
+        <td><%= school.address %></td>
+        <td><%= link_to 'Show', school %><br>
+        <%= link_to 'Edit', edit_school_path(school) %><br>
+        <%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+        <%= link_to 'Add New Student', new_student_path(:school_id => school.id) %><br>
+        <%= link_to 'List Students', students_path(:school_id => school.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 <br />
 <%= link_to 'New School', new_school_path %>
